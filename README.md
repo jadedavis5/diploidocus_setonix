@@ -2,7 +2,7 @@
 
 Nextflow workflow to parallelise https://github.com/slimsuite/diploidocus for HPC deployment
 
-Please note this work is based on Nextflow workflow manager but not endorsed by the project or its authors
+_Please note this work is based on Nextflow workflow manager but not endorsed by the project or its authors_
 
 1. Clone repo into your environment
 2. Edit nextflow.config file to change container locations to where you have them stored (not necessary for Oceanomics users). Highly recommend using a Seqera account so that the pipeline execution can be easily monitored (https://training.nextflow.io/basic_training/seqera_platform/), else delete the tower parameters in nextflow.config.
