@@ -40,7 +40,9 @@ Or to run using a different namning convention:
 nextflow run main.nf --assembly /path/to/my_assembly.mat.fa --PairedFactor "'mat', 'pat'"   #where my_assembly.pat.fa file can be found in the same directory
 
 
-![image](https://github.com/jadedavis5/diploidocus_nextflow_HPC/assets/111946376/bb472fb5-f8d4-4cfc-bfa0-b4fce262cbad)
+**Diploid mode**
+![image](https://github.com/jadedavis5/diploidocus_nextflow_HPC/assets/111946376/b1d16824-4b50-47ef-a8c1-42a958b53ed4)
+
 
 
 
