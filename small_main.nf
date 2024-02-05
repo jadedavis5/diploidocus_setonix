@@ -313,7 +313,7 @@ errorStrategy { (task.attempt <= 3) ? 'retry' : 'finish' }
 
 
         if [[ $basename == *"$factor1"* || $basename == *"$factor2"* ]]; then
-                runmode=\$"diplodiocus"
+                runmode=\$"diploidocus"
         else
                 runmode=\$"dicycle"
         fi
