@@ -1,4 +1,4 @@
-# diploidocus_HPC
+# diploidocus_setonix
 
 Nextflow based workflow to parallelise https://github.com/slimsuite/diploidocus for HPC deployment
 
