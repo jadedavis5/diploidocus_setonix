@@ -4,7 +4,7 @@
 2. Edit nextflow.config file to change container locations to where you have them stored (not necessary for Oceanomics users)
 3. Run main.nf using the slurm template provided, the following params can be added as to the nextflow run command by adding '--param /path/to/file'. Without these parameters the script will search for the files in the default places and will make them if not found:
 
-***Run parameters***
+##Run parameters
    
 **--asssembly** Path to assembly file (necessary) 
 
@@ -27,8 +27,12 @@
 
 
 
-***Diploid mode***
+##Diploid mode
 
-Using diploid mode a haplotype input will be pre-processed with it's paired haplotype file. To use this mode the **--asssembly** input stays as one file and the **--PairedFactor** [default "'hap1', 'hap2'"] parameter can be set as the difference between the files. The other haplotype file will be searched for in the same directory and if found diploid pre-processing will be performed. For example to 
+Using diploid mode a haplotype input will be pre-processed with it's paired haplotype file. To use this mode the **--asssembly** input stays as one file and the **--PairedFactor** [default "'hap1', 'hap2'"] parameter can be set as the difference between the files. The other haplotype file will be searched for in the same directory and if found diploid pre-processing will be performed. For example to run diploid mode using 2 haplotpye files run: 
+
+nextflow run main.nf --assembly /path/to/my_assembly.hap1.fa #Where 
+
+Or to run using 
 
 
