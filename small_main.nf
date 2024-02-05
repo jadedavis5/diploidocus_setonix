@@ -491,8 +491,8 @@ errorStrategy { (task.attempt <= 3) ? 'retry' : 'finish' }
         samtools sort $sam -o ${basename}.sorted.diploid.bam
         samtools index ${basename}.sorted.diploid.bam
 
-        samtools view -h ${basename}.sorted.diploid.bam \$(cat ${factor1}_sqlines.txt) > ${basename}.${factor1}.sorted.bam
-        samtools view -h ${basename}.sorted.diploid.bam \$(cat ${factor2}_sqlines.txt) > ${basename}.${factor2}.sorted.bam
+        samtools view -b -h ${basename}.sorted.diploid.bam \$(cat ${factor1}_sqlines.txt) > ${basename}.${factor1}.sorted.bam
+        samtools view -b -h ${basename}.sorted.diploid.bam \$(cat ${factor2}_sqlines.txt) > ${basename}.${factor2}.sorted.bam
         """
 }
 
