@@ -25,3 +25,8 @@
 **--purge_hap** Path to folder with purge_haplotigs output files  [default search in ("${params.projectDir}/purge_haplotigs/"]
 
 
+***Diploid mode**
+
+Using diploid mode a haplotype input will be pre-processed with it's paired haplotype file. To use this mode the **--asssembly** input stays as one file and the **--PairedFactor** [default "'hap1', 'hap2'"] parameter can be set as the difference between the files. The other haplotype file will be searched for in the same directory and if found diploid pre-processing will be performed. For example to 
+
+
