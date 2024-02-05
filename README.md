@@ -3,6 +3,7 @@
 1. Clone repo into your environment
 2. Edit nextflow.config file to change container locations to where you have them stored (not necessary for Oceanomics users)
 3. Run main.nf using the slurm template provided, the following params can be added as to the nextflow run command by adding '--param /path/to/file'. Without these parameters the script will search for the files in the default places and will make them if not found:
+
 ***Run parameters***
    
 **--asssembly** Path to assembly file (necessary) 
