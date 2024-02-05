@@ -32,7 +32,7 @@ Nextflow workflow to parallelise https://github.com/slimsuite/diploidocus for HP
 
 ## Diploid mode
 
-Using diploid mode, a haplotype input will be pre-processed with its paired haplotype file. To use this mode the **--asssembly** input stays as one file and the **--PairedFactor** [default "'hap1', 'hap2'"] parameter can be set as the difference between the files. The other haplotype file will be searched for in the same directory and if found diploid pre-processing will be performed. If no file is found will proceed in haploid mode. For example, to run diploid mode using 2 haplotype files run: 
+Using diploid mode, the haplotype input will be pre-processed with its paired haplotype file. To use this mode the **--asssembly** input stays as one file and the **--PairedFactor** [default "'hap1', 'hap2'"] parameter can be set as the difference between the files. The other haplotype file will be searched for in the same directory and if found diploid pre-processing will be performed. If no file is found will proceed in haploid mode. For example, to run diploid mode using 2 haplotype files run: 
 
 nextflow run main.nf --assembly /path/to/my_assembly.hap1.fa    #where my_assembly.hap2.fa file can be found in the same directory
 
