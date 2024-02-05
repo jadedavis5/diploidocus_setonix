@@ -268,6 +268,8 @@ workflow {
 
 
 process readpartition {
+memory { 2.GB * task.attempt }
+errorStrategy { (task.attempt <= 3) ? 'retry' : 'finish' }
         input:
         path bam
         val basename
@@ -285,7 +287,7 @@ process readpartition {
 
 process diploidocus {
 publishDir "$params.projectDir/diploidocus", mode:'symlink'
-memory { 8.GB * task.attempt }
+memory { 10.GB * task.attempt }
 time '1h'
 cpus 4
 errorStrategy { (task.attempt <= 3) ? 'retry' : 'finish' }
@@ -443,8 +445,8 @@ cpus 4
 process haplotypemapping {
 debug true
 publishDir "$params.projectDir/bam", mode:'symlink'
-cpus 8
-memory { 20.GB * task.attempt }
+cpus 16
+memory { 40.GB * task.attempt }
 time { 2.hour * task.attempt }
 errorStrategy { (task.attempt <= 3) ? 'retry' : 'finish' }
         input:
@@ -499,8 +501,8 @@ debug true
 publishDir "$params.projectDir/busco", mode:'symlink'
 tag "BUSCO on ${assembly}"
 cpus 8
-memory { 40.GB * task.attempt }
-time { 2.hour * task.attempt }
+memory { 20.GB * task.attempt }
+time { 8.hour * task.attempt }
 errorStrategy { (task.attempt <= 3) ? 'retry' : 'finish' }
         input:
         val x
@@ -541,7 +543,7 @@ errorStrategy { (task.attempt <= 3) ? 'retry' : 'finish' }
 
 process sam2bam {
 publishDir "$params.projectDir/bam", mode:'symlink'
-memory { 50.GB * task.attempt }
+memory { 15.GB * task.attempt }
 time '2h'
 cpus 8
 errorStrategy { (task.attempt <= 3) ? 'retry' : 'finish' }
@@ -561,7 +563,7 @@ errorStrategy { (task.attempt <= 3) ? 'retry' : 'finish' }
 }
 process bam_sortindex {
 debug true
-memory { 30.GB * task.attempt }
+memory { 10.GB * task.attempt }
 time '2h'
 cpus 8
 publishDir "$params.projectDir/bam", mode:'symlink'
