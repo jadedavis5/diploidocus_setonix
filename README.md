@@ -3,7 +3,7 @@
 Nextflow workflow to parallelise https://github.com/slimsuite/diploidocus for HPC deployment
 
 1. Clone repo into your environment
-2. Edit nextflow.config file to change container locations to where you have them stored (not necessary for Oceanomics users). Highly recommend getting a Seqera account so that the pipeline execution can be easily monitored (https://training.nextflow.io/basic_training/seqera_platform/), else delete the tower parameters in nextflow.config.
+2. Edit nextflow.config file to change container locations to where you have them stored (not necessary for Oceanomics users). Highly recommend using a Seqera account so that the pipeline execution can be easily monitored (https://training.nextflow.io/basic_training/seqera_platform/), else delete the tower parameters in nextflow.config.
 3. Choose which script to run based on assembly file size: small (under 600Mb), medium (600Mb-4Gb), large (4-7Gb). Note if running in diploid mode the assembly file size is based on one file.
 5. Run chosen main.nf using the slurm template provided, the following params can be added to the nextflow run command by adding **'--param /path/to/file'**. Without these parameters the script will search for the files in the default places and will make them if not found:
 
