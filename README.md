@@ -1,6 +1,6 @@
 # diploidocus_nextflow_HPC
 
-Nextflow workflow to parallelise https://github.com/slimsuite/diploidocus
+Nextflow workflow to parallelise https://github.com/slimsuite/diploidocus for HPC deployment
 
 1. Clone repo into your environment
 2. Edit nextflow.config file to change container locations to where you have them stored (not necessary for Oceanomics users)
