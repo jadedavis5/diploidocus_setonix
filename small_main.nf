@@ -447,7 +447,7 @@ debug true
 publishDir "$params.projectDir/bam", mode:'symlink'
 cpus 16
 memory { 40.GB * task.attempt }
-time { 2.hour * task.attempt }
+time { 5.hour * task.attempt }
 errorStrategy { (task.attempt <= 3) ? 'retry' : 'finish' }
         input:
         path hap1
