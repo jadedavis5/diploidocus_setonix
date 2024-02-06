@@ -11,23 +11,23 @@ _Please note this work is based on Nextflow workflow manager but not endorsed by
 
 ## Run parameters
    
-```**--asssembly** Path to assembly file (necessary) 
+```--asssembly Path to assembly file (necessary) 
 
-**--projectDir** Where output directories will be made and the deafult directory where files will be searched for [default '.']
+--projectDir Where output directories will be made and the deafult directory where files will be searched for [default '.']
 
-**--hifireads** Path to all reads files [default "$params.projectDir/reads/*"]
+--hifireads Path to all reads files [default "$params.projectDir/reads/*"]
 
-**--bam** Bam file for assembly. If running in diploid mode (using 2 assembly files) then set as the directory where both bam files can be found. [default "$params.projectDir/bam"]
+--bam Bam file for assembly. If running in diploid mode (using 2 assembly files) then set as the directory where both bam files can be found. [default "$params.projectDir/bam"]
 
-**--busco** Path to full_table.tsv output from busco [default "$params.projectDir/busco/**full_table.tsv"]
+--busco Path to full_table.tsv output from busco [default "$params.projectDir/busco/**full_table.tsv"]
 
-**--lineage** Lineage to use for BUSCO analysis (only necessary if busco file is not given) [default 'actinopterygii_odb10']
+--lineage Lineage to use for BUSCO analysis (only necessary if busco file is not given) [default 'actinopterygii_odb10']
 
-**--depthsizer** Path to folder with depthsizer output files [default search in ("${params.projectDir}/depthsizer/"]
+--depthsizer Path to folder with depthsizer output files [default search in ("${params.projectDir}/depthsizer/"]
 
-**--kat** Path to folder with kat and selfkat output files  [default search in ("${params.projectDir}/kat/"]
+--kat Path to folder with kat and selfkat output files  [default search in ("${params.projectDir}/kat/"]
 
-**--purge_hap** Path to folder with purge_haplotigs output files  [default search in ("${params.projectDir}/purge_haplotigs/"]```
+--purge_hap Path to folder with purge_haplotigs output files  [default search in ("${params.projectDir}/purge_haplotigs/"]```
 
 
 
