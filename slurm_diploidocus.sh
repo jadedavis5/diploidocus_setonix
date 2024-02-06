@@ -12,6 +12,5 @@
 #SBATCH --export=ALL
 
 module load nextflow/23.10.0
-module load minimap2/2.26--he4a0461_1
 module load singularity/3.11.4-nompi
 nextflow run main.nf --projectDir . --assembly path/to/assembly/file -disable-jobs-cancellation
