@@ -494,8 +494,8 @@ errorStrategy { (task.attempt <= 3) ? 'retry' : 'finish' }
         samtools index ${basename}.sorted.diploid.bam
 
         #This filters out any of the supplementry mapping from the other file which mixes haplotype, samtools filtering by flags doesn't work 
-        samtools view -h ${basename}.sorted.diploid.bam \$(cat ${factor1}_sqlines.txt) | grep -v \$(cat ${factor2}_sqlines.txt) | samtools view -b > ${basename}.${factor1}.sorted.bam
-        samtools view -h ${basename}.sorted.diploid.bam \$(cat ${factor2}_sqlines.txt) | grep -v \$(cat ${factor1}_sqlines.txt) | samtools view -b > ${basename}.${factor2}.sorted.bam
+        samtools view -h ${basename}.sorted.diploid.bam \$(cat ${factor1}_sqlines.txt) | grep -v -f ${factor2}_sqlines.txt | samtools view -b > ${basename}.${factor1}.sorted.bam
+        samtools view -h ${basename}.sorted.diploid.bam \$(cat ${factor2}_sqlines.txt) | grep -v -f ${factor1}_sqlines.txt | samtools view -b > ${basename}.${factor2}.sorted.bam
         """
 }
 
