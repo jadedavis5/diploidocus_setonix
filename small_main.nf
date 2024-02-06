@@ -235,7 +235,7 @@ workflow {
         def PURGEfilesToCheck = [
                 "${assembly_basename}.purge.reassignments.tsv",
                 "${assembly_basename}.purge.coverage_stats.csv",
-                "${assembly_basename}.gencov"
+                "${assembly_basename}*.gencov"
         ]
 
         def purgeExistsMap = [:]
