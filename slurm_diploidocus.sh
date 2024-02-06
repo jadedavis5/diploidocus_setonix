@@ -13,4 +13,4 @@
 
 module load nextflow/23.10.0
 module load singularity/3.11.4-nompi
-nextflow run main.nf --projectDir . --assembly path/to/assembly/file -disable-jobs-cancellation
+nextflow run main.nf --projectDir . --assembly path/to/assembly/file --reads /path/to/reads -disable-jobs-cancellation
