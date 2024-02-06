@@ -412,10 +412,10 @@ errorStrategy { (task.attempt <= 3) ? 'retry' : 'finish' }
 process depthsizer {
 debug true
 publishDir "$params.projectDir/depthsizer", mode:'symlink'
-errorStrategy 'finish'
-memory '8 GB'
+memory { 8.GB * task.attempt }
 time '2h'
 cpus 4
+errorStrategy { (task.attempt <= 3) ? 'retry' : 'finish' }
 //For some reason nextflow thinks normal depthsizer output is errerous so had to force exit code as 0
         input:
         val x
@@ -446,7 +446,7 @@ process haplotypemapping {
 debug true
 publishDir "$params.projectDir/bam", mode:'symlink'
 cpus 16
-memory { 40.GB * task.attempt }
+memory { 32.GB * task.attempt }
 time { 5.hour * task.attempt }
 errorStrategy { (task.attempt <= 3) ? 'retry' : 'finish' }
         input:
@@ -491,7 +491,7 @@ errorStrategy { (task.attempt <= 3) ? 'retry' : 'finish' }
         samtools sort $sam -o ${basename}.sorted.diploid.bam
         samtools index ${basename}.sorted.diploid.bam
 
-        #This filters out any of the supplementry mapping from the other file which mixes haplotype, samtools filtering by flags doesn't work 
+        #This filters out any of the supplementry mapping from the other file which mixes haplotype, samtools filtering by flags (2048) doesn't work 
         samtools view -h ${basename}.sorted.diploid.bam \$(cat ${factor1}_sqlines.txt) | grep -v \$(cat ${factor2}_sqlines.txt) | samtools view -b > ${basename}.${factor1}.sorted.bam
         samtools view -h ${basename}.sorted.diploid.bam \$(cat ${factor2}_sqlines.txt) | grep -v \$(cat ${factor1}_sqlines.txt) | samtools view -b > ${basename}.${factor2}.sorted.bam
         """
@@ -501,8 +501,8 @@ process busco {
 debug true
 publishDir "$params.projectDir/busco", mode:'symlink'
 tag "BUSCO on ${assembly}"
-cpus 8
-memory { 20.GB * task.attempt }
+cpus 16
+memory { 8.GB * task.attempt }
 time { 8.hour * task.attempt }
 errorStrategy { (task.attempt <= 3) ? 'retry' : 'finish' }
         input:
@@ -523,9 +523,9 @@ errorStrategy { (task.attempt <= 3) ? 'retry' : 'finish' }
 }
 process mapping {
 debug true
-memory { 30.GB * task.attempt }
+memory { 10.GB * task.attempt }
 time '2h'
-cpus 8
+cpus 4
 errorStrategy { (task.attempt <= 3) ? 'retry' : 'finish' }
         input:
         path assembly
@@ -544,9 +544,9 @@ errorStrategy { (task.attempt <= 3) ? 'retry' : 'finish' }
 
 process sam2bam {
 publishDir "$params.projectDir/bam", mode:'symlink'
-memory { 15.GB * task.attempt }
+memory { 5.GB * task.attempt }
 time '2h'
-cpus 8
+cpus 2
 errorStrategy { (task.attempt <= 3) ? 'retry' : 'finish' }
         input:
         path sam
@@ -564,9 +564,9 @@ errorStrategy { (task.attempt <= 3) ? 'retry' : 'finish' }
 }
 process bam_sortindex {
 debug true
-memory { 10.GB * task.attempt }
+memory { 5.GB * task.attempt }
 time '2h'
-cpus 8
+cpus 1
 publishDir "$params.projectDir/bam", mode:'symlink'
 errorStrategy { (task.attempt <= 3) ? 'retry' : 'finish' }
         input:
