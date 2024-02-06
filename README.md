@@ -11,7 +11,8 @@ _Please note this work is based on Nextflow workflow manager but not endorsed by
 
 ## Run parameters
    
-```--asssembly Path to assembly file (necessary) 
+```
+--asssembly Path to assembly file (necessary) 
 
 --projectDir Where output directories will be made and the deafult directory where files will be searched for [default '.']
 
@@ -27,7 +28,8 @@ _Please note this work is based on Nextflow workflow manager but not endorsed by
 
 --kat Path to folder with kat and selfkat output files  [default search in ("${params.projectDir}/kat/"]
 
---purge_hap Path to folder with purge_haplotigs output files  [default search in ("${params.projectDir}/purge_haplotigs/"]```
+--purge_hap Path to folder with purge_haplotigs output files  [default search in ("${params.projectDir}/purge_haplotigs/"]
+```
 
 
 
