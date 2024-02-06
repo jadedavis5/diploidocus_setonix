@@ -12,6 +12,7 @@ _Please note this work is based on Nextflow workflow manager but not endorsed by
 ## Run parameters
    
 ```
+Assembly is the only necessary input, all other files will be made by the workflow if needed
 --asssembly Path to assembly file (necessary) 
 
 --projectDir Where output directories will be made and the deafult directory where files will be searched for [default '.']
