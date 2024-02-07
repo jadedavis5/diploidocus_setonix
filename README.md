@@ -16,7 +16,8 @@ Assembly and reads are the only necessary input, all other files will be made by
 
 --projectDir Where output directories will be made and the deafult directory where files will be searched for [default '.']
 
---hifireads Path to all reads files [default "$params.projectDir/reads/*"], you have to put "" around the directory location if using '*' e.g. --hifireads "/path/to/*.fastq"
+--hifireads Path to all reads files [default "$params.projectDir/reads/*"], you have to put "" around the directory location if
+using '*' e.g. --hifireads "/path/to/*.fastq"
 
 --bam Bam file for assembly. If running in diploid mode (using 2 assembly files) then set as the directory where both bam files can be found. [default "$params.projectDir/bam"]
 
