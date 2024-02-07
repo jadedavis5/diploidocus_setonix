@@ -114,7 +114,7 @@ workflow {
         } else {
                 println('No haplotype pairs found- process assembly file in primary mode')
                 def assembly_type = ''
-                reads_ch = Channel.fromPath("$params.hifireads", checkIfExists: true)
+                reads_ch = Channel.fromPath("$params.hifireads", checkIfExists: true).collect()
 
         //Search for bam/create and sort if needed
                 def bamDirectory = new File("$params.projectDir/bam/")
