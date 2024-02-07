@@ -49,10 +49,12 @@ nextflow run main.nf --assembly /path/to/my_assembly.mat.fa --PairedFactor "'mat
 
 
 **Diploid mode**
-![image](https://github.com/jadedavis5/diploidocus_nextflow_HPC/assets/111946376/b1d16824-4b50-47ef-a8c1-42a958b53ed4)
+![image](https://github.com/jadedavis5/diploidocus_setonix/assets/111946376/76ff24d1-f365-4a7c-9098-d38ffa36af36)
+
 
 **Haploid mode**
-![image](https://github.com/jadedavis5/diploidocus_nextflow_HPC/assets/111946376/c894483d-dc88-4ebe-9673-3b3ed69d73bc)
+![image](https://github.com/jadedavis5/diploidocus_setonix/assets/111946376/0130c0f5-b397-4e91-a241-741286782ef4)
+
 
 
 
