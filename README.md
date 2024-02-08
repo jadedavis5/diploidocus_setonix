@@ -26,6 +26,10 @@ the directory where both bam files can be found. [default "$params.projectDir/ba
 
 --lineage Lineage to use for BUSCO analysis (only necessary if busco file is not given) [default 'actinopterygii_odb10']
 
+
+Give folder names without a '/' at the end e.g. --depthsizer /my_assembly/depthsizer
+
+
 --depthsizer Path to folder with depthsizer output files [default search in ("${params.projectDir}/depthsizer/"]
 
 --kat Path to folder with kat and selfkat output files  [default search in ("${params.projectDir}/kat/"]
