@@ -99,15 +99,17 @@ workflow {
                         haplotypesplit(diploid_file, assembly1_ch, assembly2_ch, hapbasename_ch, assembly_type, factorsToCheck)
                         sortedbam_ch = haplotypesplit.out.assembly_file
                 } else {
-                        bam_ch = Channel.fromPath(foundBamFiles[assembly_type]?.getCanonicalPath())
-                        def usingbam = new File(foundBamFiles[assembly_type]?.getCanonicalPath())
-                        if (!usingbam.name.contains("sort")) {
-                                sortedbam_ch = bam_sortindex(bam_ch, hapbasename_ch, assembly_type)
 
-                        } else {
-                                println('Sorting bam file found/given')
-                                sortedbam_ch = bam_ch
+                        bam_ch = Channel.fromPath(foundBamFiles[assembly_type]?.getCanonicalPath())
+                        bam_ch.branch {
+                                TRUE: it.toString().contains('sort')
+                                FALSE: !it.toString().contains('sort')
                         }
+                        .set { isSorted }
+
+                        sorted = isSorted.TRUE
+                        unsorted = bam_sortindex(isSorted.FALSE, hapbasename_ch)
+                        sortedbam_ch = sorted.combine(unsorted)
                 }
                 reads_ch = readpartition(sortedbam_ch, hapbasename_ch, assembly_type)
 
