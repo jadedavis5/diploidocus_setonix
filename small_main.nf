@@ -99,17 +99,15 @@ workflow {
                         haplotypesplit(diploid_file, assembly1_ch, assembly2_ch, hapbasename_ch, assembly_type, factorsToCheck)
                         sortedbam_ch = haplotypesplit.out.assembly_file
                 } else {
-
                         bam_ch = Channel.fromPath(foundBamFiles[assembly_type]?.getCanonicalPath())
-                        bam_ch.branch {
-                                TRUE: it.toString().contains('sort')
-                                FALSE: !it.toString().contains('sort')
-                        }
-                        .set { isSorted }
+                        def usingbam = new File(foundBamFiles[assembly_type]?.getCanonicalPath())
+                        if (!usingbam.name.contains("sort")) {
+                                sortedbam_ch = bam_sortindex(bam_ch, hapbasename_ch, assembly_type)
 
-                        sorted = isSorted.TRUE
-                        unsorted = bam_sortindex(isSorted.FALSE, hapbasename_ch)
-                        sortedbam_ch = sorted.combine(unsorted)
+                        } else {
+                                println('Sorting bam file found/given')
+                                sortedbam_ch = bam_ch
+                        }
                 }
                 reads_ch = readpartition(sortedbam_ch, hapbasename_ch, assembly_type)
 
@@ -127,25 +125,33 @@ workflow {
                 if (params.bam) {
                         println('Using user inputted bam')
                         bam_ch = Channel.fromPath("$params.bam")
+                        def usingbam = new File(params.bam)
+
+                        if (!usingbam.name.contains("sort")) {
+                                println('Sorting user inputted bam')
+                                sortedbam_ch = bam_sortindex(bam_ch, basename_ch, assembly_type)
+
+                        } else {
+                                sortedbam_ch = bam_ch
+                        }
 
                 } else if (bamFile?.exists()) {
                         println("Found bam in project directory: ${bamFile}")
                         bam_ch = Channel.fromPath(bamFile.absolutePath)
 
+                        if (!bamFile.name.contains("sort")) {
+                                println('Sorting the bam file found')
+                                sortedbam_ch = bam_sortindex(bam_ch, basename_ch, assembly_type)
+
+                        } else {
+                                println('Found bam already sorted')
+                                sortedbam_ch = bam_ch
+                        }
                 } else {
                         println('No bam found, will create')
                         sam_ch = mapping(assembly_ch, hifireads_ch, basename_ch)
-                        bam_ch = sam2bam(sam_ch, basename_ch)
+                        sortedbam_ch = sam2bam(sam_ch, basename_ch)
                         }
-                bam_ch.branch {
-                TRUE: it.toString().contains('sort')
-                FALSE: !it.toString().contains('sort')
-                }
-                .set { isSorted }
-
-                sorted = isSorted.TRUE
-                unsorted = bam_sortindex(isSorted.FALSE, hapbasename_ch)
-                sortedbam_ch = sorted.combine(unsorted)
                 }
 
                 //Find/create busco
