@@ -589,6 +589,6 @@ errorStrategy { (task.attempt <= 3) ? 'retry' : 'finish' }
         fi
 
         samtools sort -@ \$threads -o \${output_basename}.sorted.bam "$bam"
-        samtools index \$output_file
+        samtools index \${output_basename}.sorted.bam
         """
 }
